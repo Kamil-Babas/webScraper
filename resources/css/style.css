@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: darkgray;
+}
+
+.container {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form-container input {
+    width: 40rem;
+    text-align: center;
+    height: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.form-button {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-size: 1.5rem;
+}
+
+
