@@ -9,7 +9,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    flex-direction: column;
 }
 
 .form-container input {
@@ -29,4 +29,8 @@ button {
     font-size: 1.5rem;
 }
 
-
+.errors-container {
+    display: none;
+    background-color: rosybrown;
+    margin-bottom: 1rem;
+}

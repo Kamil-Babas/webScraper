@@ -5,10 +5,10 @@ use App\Http\Requests\UrlRequest;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpClient\Exception\TransportException;
 
-class ScrapController extends Controller
+class ScrapeController extends Controller
 {
 
-    public function scrapUrl(UrlRequest $request) : JsonResponse {
+    public function scrapeUrl(UrlRequest $request) : JsonResponse {
 
         $web = new \Spekulatius\PHPScraper\PHPScraper;
         $web->setConfig(['timeout' => 30]);
@@ -24,7 +24,8 @@ class ScrapController extends Controller
                 'website_data' => [
 
                     'title' => $web->title,
-                    'description' => $web->description,
+                    // includes description, author, image, keywords
+                    'meta_tags' => $web->metaTags(),
 
                     'header_tags' => [
                         'h1' => $web->h1,
@@ -45,7 +46,7 @@ class ScrapController extends Controller
             $data = [
                 'success' => false,
                 'errors' => [
-                    'url' => 'Website not found'
+                    'url' => ['Website not found']
                 ]
             ];
 

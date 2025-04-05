@@ -13,13 +13,19 @@
 
     <div class="container">
 
+        <div id="errors_container" class="errors-container">
+            <ul id="errors">
+
+            </ul>
+        </div>
+
         <div class="form-container">
             <form>
                 <div class="url-search-input">
                     <input type="text" id="urlInput">
                 </div>
                 <div class="form-button">
-                    <button id="searchButton">Search</button>
+                    <button id="searchButton">Scrape website</button>
                 </div>
             </form>
         </div>
