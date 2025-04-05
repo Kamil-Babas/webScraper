@@ -22,12 +22,46 @@
         <div class="form-container">
             <form>
                 <div class="url-search-input">
-                    <input type="text" id="urlInput">
+                    <input type="text" id="urlInput" placeholder="Enter website URL (e.g., https://example.com)">
                 </div>
                 <div class="form-button">
                     <button id="searchButton">Scrape website</button>
                 </div>
             </form>
+        </div>
+
+        <div id="websiteDetailsContainer" class="website-details-container">
+            <div class="website-details">
+                <div class="website-title"><strong>Title:</strong> <span id="website_title"></span></div>
+                <div><strong>Description:</strong> <span id="website_description"></span></div>
+            </div>
+        </div>
+
+        <div id="h1Container" class="header-elements-container">
+            <details>
+                <summary>Click to view the list of <span class="bold header">&nbsp;&lt;h1&gt;</span></summary>
+                <ol id="h1_list">
+
+                </ol>
+            </details>
+        </div>
+
+        <div id="h2Container" class="header-elements-container">
+            <details>
+                <summary>Click to view the list of <span class="bold header">&nbsp;&lt;h2&gt;</span></summary>
+                <ol id="h2_list">
+
+                </ol>
+            </details>
+        </div>
+
+        <div id="h3Container" class="header-elements-container">
+            <details>
+                <summary>Click to view the list of <span class="bold header">&nbsp;&lt;h3&gt;</span></summary>
+                <ol id="h3_list">
+
+                </ol>
+            </details>
         </div>
 
     </div>

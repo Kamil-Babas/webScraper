@@ -12,11 +12,17 @@ body {
     flex-direction: column;
 }
 
-.form-container input {
+#urlInput {
     width: 40rem;
     text-align: center;
-    height: 1.5rem;
+    height: 2.2rem;
     font-size: 1.5rem;
+    border: none;
+    border-radius: 2rem;
+}
+
+#urlInput {
+    outline-color: royalblue;
 }
 
 .form-button {
@@ -31,6 +37,74 @@ button {
 
 .errors-container {
     display: none;
-    background-color: rosybrown;
+    background-color: indianred;
     margin-bottom: 1rem;
+    font-weight: bolder;
+}
+
+.website-details-container {
+    display: none;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+}
+
+.website-title {
+    margin-bottom: 0.5rem;
+}
+
+#searchButton {
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all 1s;
+}
+
+#searchButton:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .7s;
+    transform: scale(0.92);
+}
+
+::selection {
+    background-color: orange;
+    color: black;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.header {
+    font-size: 1.2rem;
+}
+
+.bg-red {
+    color: black;
+    font-weight: bold;
+    background-color: indianred;
+    font-size: 1.3rem;
+}
+
+.header-elements-container {
+    display: none;
+}
+
+summary {
+    font-size: 1.5rem;
+}
+
+.header-li {
+    font-size: 1.3rem;
 }
