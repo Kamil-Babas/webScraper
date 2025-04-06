@@ -50,6 +50,7 @@ function sendRequest(urlToScrape)
                 populateHeaderList(h3Elements, 'h3_list');
 
                 populateLinksList(links);
+                populateImagesContainer(images);
 
             }
 
@@ -88,6 +89,7 @@ function setDisplayNone(){
         document.getElementById('h3Container'),
         document.getElementById('websiteDetailsContainer'),
         document.getElementById('linksContainer'),
+        document.getElementById('imagesContainer'),
     ];
 
     containers.forEach(container => {
@@ -146,7 +148,7 @@ function populateHeaderList(headersArray, listId){
         const li = document.createElement('li');
 
         li.classList.add('bg-red');
-        li.textContent = `Warning - This website doesnt have <${headerName}> elements`;
+        li.textContent = `This website doesnt have <${headerName}> elements`;
 
         list.appendChild(li);
     }
@@ -184,9 +186,44 @@ function populateLinksList(linksArray){
         const li = document.createElement('li');
 
         li.classList.add('bg-red');
-        li.textContent = 'Warning - This website doesnt have <a> elements';
+        li.textContent = 'This website doesnt have <a> elements';
 
         list.appendChild(li);
+    }
+
+}
+
+function populateImagesContainer(imagesArray) {
+
+    const noImagesText = document.getElementById('noImagesText');
+    noImagesText.style.display = 'none';
+
+    const imagesFlexContainer = document.getElementById('imagesFlexContainer');
+    imagesFlexContainer.innerHTML = "";
+
+    const container = document.getElementById('imagesContainer');
+    container.style.display = 'block';
+
+    if(imagesArray.length > 0)
+    {
+        imagesArray.forEach(image => {
+
+            if(image.url !== null){
+
+                const imageElement = document.createElement('img');
+                imageElement.src = image.url;
+                imageElement.alt = image.alt ?? '';
+                imageElement.loading = 'lazy';
+
+                imagesFlexContainer.appendChild(imageElement);
+
+            }
+
+        })
+    }
+    else
+    {   // Displays that there is no images on scrapped website
+        noImagesText.style.display = 'block';
     }
 
 

@@ -73,6 +73,17 @@
             </details>
         </div>
 
+        <div id="imagesContainer" class="imagesContainer">
+            <h1>Images:</h1>
+
+            <p id="noImagesText" class="bg-red">This website doesnt have images</p>
+
+            <div id="imagesFlexContainer" class="imagesFlexContainer">
+
+            </div>
+
+        </div>
+
     </div>
 
     @vite(['resources/js/script.js'])
