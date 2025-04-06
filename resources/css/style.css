@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -87,7 +88,7 @@ button {
 }
 
 .header {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .bg-red {
@@ -103,8 +104,39 @@ button {
 
 summary {
     font-size: 1.5rem;
+    list-style-position: outside;
 }
 
 .header-li {
     font-size: 1.3rem;
+    padding-top: 0.5rem;
 }
+
+.margin-bottom {
+    margin-bottom: 2rem;
+}
+
+details {
+    background-image: linear-gradient(
+        to top left,
+        hsl(280deg 4% 80%) 0,
+        hsl(240deg 100% 87%)
+    );
+    padding-bottom: 0.1rem;
+    padding-inline: 0.5rem;
+}
+
+summary {
+    padding-inline: 2rem;
+    position: relative;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.display-none {
+    display: none;
+}
+
+
+

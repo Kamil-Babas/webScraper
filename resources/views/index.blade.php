@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div id="h1Container" class="header-elements-container">
+        <div id="h1Container" class="header-elements-container margin-bottom">
             <details>
                 <summary>Click to view the list of <span class="bold header">&nbsp;&lt;h1&gt;</span></summary>
                 <ol id="h1_list">
@@ -46,7 +46,7 @@
             </details>
         </div>
 
-        <div id="h2Container" class="header-elements-container">
+        <div id="h2Container" class="header-elements-container margin-bottom">
             <details>
                 <summary>Click to view the list of <span class="bold header">&nbsp;&lt;h2&gt;</span></summary>
                 <ol id="h2_list">
@@ -55,10 +55,19 @@
             </details>
         </div>
 
-        <div id="h3Container" class="header-elements-container">
+        <div id="h3Container" class="header-elements-container margin-bottom">
             <details>
                 <summary>Click to view the list of <span class="bold header">&nbsp;&lt;h3&gt;</span></summary>
                 <ol id="h3_list">
+
+                </ol>
+            </details>
+        </div>
+
+        <div id="linksContainer" class="display-none margin-bottom">
+            <details>
+                <summary>Show links on website</summary>
+                <ol id="links_list">
 
                 </ol>
             </details>

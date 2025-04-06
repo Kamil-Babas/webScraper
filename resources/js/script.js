@@ -44,14 +44,13 @@ function sendRequest(urlToScrape)
 
                 setTitle(websiteTitle);
                 setDescription(websiteDescription);
+
                 populateHeaderList(h1Elements, 'h1_list');
                 populateHeaderList(h2Elements, 'h2_list');
                 populateHeaderList(h3Elements, 'h3_list');
-                // console.log("title: ", websiteTitle);
-                // console.log("description: ", websiteDescription);
-                // console.log(h3Elements);
-                // console.log(links);
-                // console.log('images: ', images);
+
+                populateLinksList(links);
+
             }
 
         })
@@ -87,7 +86,8 @@ function setDisplayNone(){
         document.getElementById('h1Container'),
         document.getElementById('h2Container'),
         document.getElementById('h3Container'),
-        document.getElementById('websiteDetailsContainer')
+        document.getElementById('websiteDetailsContainer'),
+        document.getElementById('linksContainer'),
     ];
 
     containers.forEach(container => {
@@ -123,11 +123,11 @@ function populateHeaderList(headersArray, listId){
 
     const headerName = listId.split('_')[0];
 
-    const container = document.getElementById(headerName + 'Container')
-    container.style.display = 'block';
-
     const list = document.getElementById(listId);
     list.innerHTML = "";
+
+    const container = document.getElementById(headerName + 'Container')
+    container.style.display = 'block';
 
     if(headersArray.length > 0)
     {
@@ -150,5 +150,44 @@ function populateHeaderList(headersArray, listId){
 
         list.appendChild(li);
     }
+
+}
+
+function populateLinksList(linksArray){
+
+    const list = document.getElementById('links_list');
+    list.innerHTML = "";
+
+    const container = document.getElementById('linksContainer');
+    container.style.display = 'block';
+
+    if(linksArray.length > 0)
+    {
+        linksArray.forEach(link => {
+
+            const li = document.createElement('li');
+            const linkElement = document.createElement('a');
+
+            linkElement.href = link.url;
+            linkElement.text = link.text || 'text property was not set on website'
+            linkElement.target = 'blank';
+
+            li.classList.add('header-li')
+            li.appendChild(linkElement);
+
+            list.appendChild(li);
+
+        });
+    }
+    else
+    {
+        const li = document.createElement('li');
+
+        li.classList.add('bg-red');
+        li.textContent = 'Warning - This website doesnt have <a> elements';
+
+        list.appendChild(li);
+    }
+
 
 }
