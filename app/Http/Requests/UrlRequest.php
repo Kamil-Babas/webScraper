@@ -23,6 +23,7 @@ class UrlRequest extends FormRequest
     {
         return [
             'url' => ['required', 'url', 'active_url'],
+            'scrapeWithImages' => ['nullable', 'boolean']
         ];
     }
 }

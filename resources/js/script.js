@@ -5,12 +5,14 @@ searchButton.addEventListener('click', (e) => {
     e.preventDefault();
 
     let url = document.getElementById('urlInput').value;
-    sendRequest(url)
+    let imagesCheckbox = document.getElementById('imagesCheckbox').checked;
+
+    sendRequest(url, imagesCheckbox);
 
 });
 
 
-function sendRequest(urlToScrape)
+function sendRequest(urlToScrape, scrapeWithImagesBool)
 {
     setDisplayNone();
     startLoadingAnimation();
@@ -22,7 +24,10 @@ function sendRequest(urlToScrape)
             'X-Requested-With': 'XMLHttpRequest',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
         },
-        body: JSON.stringify({url: urlToScrape})
+        body: JSON.stringify({
+            url: urlToScrape,
+            scrapeWithImages: scrapeWithImagesBool
+        })
     })
         .then(response => response.json())
         .then(data => {
@@ -30,6 +35,7 @@ function sendRequest(urlToScrape)
             if (data.errors)
             {
                 populateErrorsContainer(data.errors);
+                stopLoadingAnimation();
             }
             else
             {
@@ -41,7 +47,6 @@ function sendRequest(urlToScrape)
                 const h3Elements = data.website_data.header_tags.h3;
 
                 const links = data.website_data.links;
-                const images = data.website_data.images;
 
                 setTitle(websiteTitle);
                 setDescription(websiteDescription);
@@ -51,10 +56,13 @@ function sendRequest(urlToScrape)
                 populateHeaderList(h3Elements, 'h3_list');
 
                 populateLinksList(links);
-                populateImagesContainer(images);
+
+                if(scrapeWithImagesBool){
+                    const images = data.website_data.images;
+                    populateImagesContainer(images);
+                }
 
                 stopLoadingAnimation();
-
             }
 
         })
@@ -219,7 +227,6 @@ function populateImagesContainer(imagesArray) {
                 imageElement.loading = 'lazy';
 
                 imagesFlexContainer.appendChild(imageElement);
-
             }
 
         })

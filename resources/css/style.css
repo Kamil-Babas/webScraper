@@ -6,16 +6,13 @@ body {
 }
 
 .container {
+    margin-top: 10rem;
     min-height: 100dvh;
     display: flex;
     align-items: center;
     /*justify-content: center;*/
     flex-direction: column;
     margin-bottom: 4rem;
-}
-
-.form-container {
-    margin-top: 10rem;
 }
 
 #urlInput {
@@ -44,7 +41,6 @@ button {
 .errors-container {
     display: none;
     background-color: indianred;
-    margin-bottom: 1rem;
     font-weight: bolder;
 }
 
@@ -178,4 +174,13 @@ summary {
     to {
         transform: rotate(360deg);
     }
+}
+
+.images-checkbox-div {
+    margin-left: 1rem;
+    margin-bottom: 1rem
+}
+
+.imagesContainer>h1 {
+    text-align: center;
 }

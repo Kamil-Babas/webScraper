@@ -1,67 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\UrlRequest;
+use App\Services\ScrapeService;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpClient\Exception\TransportException;
 
 class ScrapeController extends Controller
 {
 
-    public function scrapeUrl(UrlRequest $request) : JsonResponse {
+    private ScrapeService $scrapeService;
 
-        $web = new \Spekulatius\PHPScraper\PHPScraper;
-        $web->setConfig(['timeout' => 30]);
+    public function __construct(ScrapeService $scrapeService)
+    {
+        $this->scrapeService = $scrapeService;
+    }
 
-        try
+    public function scrapeUrl(UrlRequest $request): JsonResponse
+    {
+        $result = $this->scrapeService->scrapeWebsite($request);
+
+        if (!$result['success'])
         {
-            $url = $request->url;
-            $web->go($url);
+            // url probably doesnt exist or connecting took to long (more than 60s)
+            if (isset($result['errors']['url'])) {
+                return response()->json($result, 400);
+            }
 
-            $data = [
-                'success' => true,
-                'message' => 'Website scrapped successfully',
-                'website_data' => [
-
-                    'title' => $web->title,
-                    // includes description, author, image, keywords
-                    'meta_tags' => $web->metaTags(),
-
-                    'header_tags' => [
-                        'h1' => $web->h1,
-                        'h2' => $web->h2,
-                        'h3' => $web->h3
-                    ],
-
-                    'links' => $web->linksWithDetails,
-                    'images' => $web->imagesWithDetails
-                ]
-            ];
-
-            return response()->json($data, 200);
-
-        }
-        catch(TransportException $exception)
-        {
-            $data = [
-                'success' => false,
-                'errors' => [
-                    'url' => ['Website not found']
-                ]
-            ];
-
-            return response()->json($data, 400);
-        }
-        catch(\Exception $e)
-        {
-            $data = [
-                'success' => false,
-                'message' => 'Unknown error occured'
-            ];
-
-            return response()->json($data, 500);
+            //unexpected error
+            return response()->json($result, 500);
         }
 
+        return response()->json($result, 200);
     }
 
 }
