@@ -30,6 +30,8 @@
             </form>
         </div>
 
+        <div id="loadingAnimation" class="loading-animation"></div>
+
         <div id="websiteDetailsContainer" class="website-details-container">
             <div class="website-details">
                 <div class="website-title"><strong>Title:</strong> <span id="website_title"></span></div>

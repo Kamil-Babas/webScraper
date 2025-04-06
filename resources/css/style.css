@@ -158,3 +158,24 @@ summary {
     align-items: center;
     gap: 1.5rem;
 }
+
+.loading-animation {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-top: 6px solid #4f46e5; /* Tailwind indigo-600 */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 50px auto; /* center it */
+}
+
+.loading-animation.active {
+    display: block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

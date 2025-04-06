@@ -13,6 +13,7 @@ searchButton.addEventListener('click', (e) => {
 function sendRequest(urlToScrape)
 {
     setDisplayNone();
+    startLoadingAnimation();
 
     fetch('/api/scrape/url', {
         method: 'POST',
@@ -51,6 +52,8 @@ function sendRequest(urlToScrape)
 
                 populateLinksList(links);
                 populateImagesContainer(images);
+
+                stopLoadingAnimation();
 
             }
 
@@ -226,5 +229,14 @@ function populateImagesContainer(imagesArray) {
         noImagesText.style.display = 'block';
     }
 
+}
 
+function startLoadingAnimation() {
+    const loader = document.getElementById('loadingAnimation');
+    loader.classList.add('active');
+}
+
+function stopLoadingAnimation(){
+    const loader = document.getElementById('loadingAnimation');
+    loader.classList.remove('active');
 }
