@@ -27,7 +27,7 @@
                 </label>
             </div>
             <div class="url-search-input">
-                <input type="text" id="urlInput" placeholder="Enter website URL (e.g., https://example.com)">
+                <input type="text" id="urlInput" placeholder="Enter website URL (e.g. https://example.com)">
             </div>
             <div class="form-button">
                 <button id="searchButton">Scrape website</button>

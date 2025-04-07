@@ -4,7 +4,7 @@ searchButton.addEventListener('click', (e) => {
 
     e.preventDefault();
 
-    let url = document.getElementById('urlInput').value;
+    let url = document.getElementById('urlInput').value.trim();
     let imagesCheckbox = document.getElementById('imagesCheckbox').checked;
 
     sendRequest(url, imagesCheckbox);
@@ -29,7 +29,15 @@ function sendRequest(urlToScrape, scrapeWithImagesBool)
             scrapeWithImages: scrapeWithImagesBool
         })
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 429) {
+                alert("Too many requests from this IP. Try again later");
+                setDisplayNone();
+                stopLoadingAnimation();
+                throw new Error("Too many requests");
+            }
+            return response.json()
+        })
         .then(data => {
 
             if (data.errors)
